@@ -1,0 +1,43 @@
+img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+    
+}
+
+.headline{
+    color: white;
+    font-size: 80px;
+    border-bottom: solid;
+    border-bottom-color: white;
+    border-bottom-width: 5px;
+    text-align: center;
+    /* margin-left:400px; */
+    /* margin-right:400px; */
+}
+
+.begin {
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 80px;
+}
+.wins {
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 80px;
+}
+.guessesRemaining {
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 80px;
+}
+.lettersAlreadyGuessed{
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 80px;
+}
