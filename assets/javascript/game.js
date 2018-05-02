@@ -1,127 +1,187 @@
-function getRandomInt(max) {
+
+  function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
-    }
+   }
+ 
+ var artist=["kanye", "drake", "eminem", "kendrick"];
+ 
+ console.log("artist: "+artist)
+ 
+ var computerChoiceLength = artist.length;
+ 
+ console.log("artistlength: "+computerChoiceLength) 
+ 
+ var i = 10;
+ 
+ 
+ //document.getElementById("i").innerHTML = i;
+ 
+ 
+ var computerChoice = artist[getRandomInt(computerChoiceLength)];
+ 
+ console.log("computerChoice: "+computerChoice)
+ 
+ var charArtist = Array.from(computerChoice);
   
-  
-  
-  
-  var artist=["kanyee", "drakee"];
-  
-  console.log("artist "+artist)
-  
-  var computerChoiceLength = artist.length;
-  
-  console.log("artistlength "+computerChoiceLength)
-  
-  var i = 10;
-  
-  var computerChoice = artist[getRandomInt(computerChoiceLength)];
-  
-  console.log("computerChoice "+computerChoice)
-  
-  var charArtist = Array.from(computerChoice);
-  
-  console.log("charArtist "+charArtist)
-  
-  artistLength =computerChoice.length;
-  
-  console.log("artistlength "+artistLength)
-  
-  blank = '-'.repeat(artistLength);
-  
-  console.log("blank "+blank)
-  
-  blankString = Array.from(blank);
-  
-  console.log("blankstring "+blankString)
-  
-  
-  var test = computerChoice[0];
-  
-  console.log("this is test "+test)
-  
-  
-  document.onkeyup = function(event) {
-  
-  var userGuess = event.key;
-  
-  console.log("userGuess "+userGuess)
-  
-  
-  var check = charArtist.indexOf(userGuess);
-  
-  console.log("check "+check)
-  
-  
-  n=0;
-  
-  function kelseySplice(n, artistLength, blankString, userGuess, computerChoice) {
-  var kels = "";
-     for (n=0; n < artistLength; n++) {
-  
+ console.log("charArtist: "+charArtist)
+ 
+ var artistLength =computerChoice.length;
+ 
+ console.log("artistlength: "+artistLength)
+ 
+ var blank = '-'.repeat(artistLength);
+ 
+ console.log("blank: "+blank)
+ 
+ var charBlank = Array.from(blank);
+ 
+ console.log("charBlank: "+charBlank)
+ 
+ var array = [];
+ 
+ console.log("array is "+array)
+ 
+ trackArray = [];
+ 
+ 
+ 
+ 
+ /////////////////////////////////
+ 
+ 
+ document.onkeyup = function(event) {
+ 
+ var userGuessCap = event.key;
+ 
+ var userGuess = userGuessCap.toLowerCase();
+ 
+ console.log("userGuess: "+userGuess)
+ 
+ var check = charArtist.indexOf(userGuess);
+ 
+ console.log("check: "+check)
+ 
+ var x = 0;
+ 
+ 
+ 
+ userGuessArray=Array.from(userGuess)
+ 
+ 
+ 
+ 
+ ///////// BEGIN LOGIC HERE ////////
+ 
+ if (trackArray.indexOf(userGuess) === -1) {
+ 
+ 
+ 
+ 
+ function addArray(userGuess, array, userGuessArray){
+ 
+  var newArray = new Array;
      
+     if(array.indexOf(userGuess) === -1) {
+ 
+      newArray = array.concat(userGuessArray);
+    
+     }
+ 
+   if (array.indexOf(userGuess) > -1) {
+     newArray = array.concat();
+    
+     
+   }
+ 
+   return array = newArray;
   
-  if (userGuess === computerChoice[n]) {
-  
-  
+ }
+ 
+ trackArray =addArray(userGuess, array, userGuessArray);
+ 
+ document.getElementById("trackArray").innerHTML = trackArray;
+ 
+ console.log("updated array "+trackArray)
+ 
+ array = addArray(userGuess, array, userGuessArray);
+ 
+ 
+ 
+ 
+ 
+ var n = 0;
+ 
+  function kelseySplice(n, artistLength, charBlank, userGuess, computerChoice) {
+    var kels = "";
+     for (n=0; n < artistLength; n++) {
+ 
+       if (userGuess === computerChoice[n]) {
    
-     kels =blankString.splice(n, 1, userGuess);
-  
-    }
-  }
-  return blankstring = kels;
-  }
-  
-  
-  
-  
+         kels =charBlank.splice(n, 1, userGuess);
+       }
+     }
+    return charBlank = kels;
+   }
+ 
+ 
+ 
+ console.log("this is tracker "+trackArray.indexOf(userGuess))
+ 
+ 
+ 
+ 
   if (check>-1){
    
-  // blankString.splice(check, 1, userGuess);
-  
-  blankString === kelseySplice(n, artistLength, blankString, userGuess, computerChoice);
-  
-   console.log("NEW BLANK STRING "+blankString)
-  
-   i=i-1
-  
-   console.log("i="+i)
+    // charBlank.splice(check, 1, userGuess);
+ 
+    charBlank === kelseySplice(n, artistLength, charBlank, userGuess, computerChoice);
+ 
+    console.log("NEW BLANK STRING "+charBlank)
+ 
+ 
+ 
+    i=i-1
+ 
+    console.log("i="+i)
   }
-  
-  
-  
-  blankAssString = blankString.join("");
-  
-  console.log("blankAssString "+blankAssString)
-  
-  
-  
-  if (blankAssString === computerChoice) {
-  
-   //console.log("YOU WIN")
-  
-  alert("YOU WIN!!!")
-  
-   location.reload()
+ 
+ 
+ 
+ blankStringNew = charBlank.join("");
+ 
+ console.log("blankStringNew "+blankStringNew)
+ 
+ document.getElementById("blankStringNew").innerHTML = blankStringNew;
+ 
+ 
+ 
+  if (blankStringNew === computerChoice) {
+ 
+ 
+    alert("YOU WIN!!!")
+ 
+    location.reload()
   }
-  
-  
+   
+ 
   if (check === -1) {
-  
-   i=i-1;
-  
-   console.log("i="+i)
-  
+ 
+    i=i-1;
+ 
+    console.log("i="+i)
+ 
   }
-  
+ 
+ 
   if ( i<1) {
+ 
+    alert("YOU LOSE!!!")
+ 
+    location.reload()
+   }
   
-   alert("YOU LOSE!!!")
-  
-   location.reload()
-  }
-  
-  
-  
-  
-  }
+ 
+   document.getElementById("countdown").innerHTML = i;
+ 
+ }
+ }

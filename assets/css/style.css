@@ -1,43 +1,34 @@
-img {
-    position: absolute;
-    left: 0px;
-    top: 0px;
+#headline{
+color: white;
+font-size: 60px;
+text-align: center;
+
+
+}
+
+img{
+    position:absolute;
     z-index: -1;
-    
 }
 
-.headline{
+#blankStringNew{
     color: white;
-    font-size: 80px;
-    border-bottom: solid;
-    border-bottom-color: white;
-    border-bottom-width: 5px;
+    font-size: 30px;
     text-align: center;
-    /* margin-left:400px; */
-    /* margin-right:400px; */
 }
 
-.begin {
-    color: white;
-    font-size: 50px;
-    text-align: center;
-    margin-top: 80px;
+#countdown{
+    color:white;
+    font-size:30px;
+    text-align:center;
 }
-.wins {
-    color: white;
-    font-size: 50px;
-    text-align: center;
-    margin-top: 80px;
+h2{
+    color:white;
+    font-size:30px;
+    text-align:center;
 }
-.guessesRemaining {
-    color: white;
-    font-size: 50px;
-    text-align: center;
-    margin-top: 80px;
-}
-.lettersAlreadyGuessed{
-    color: white;
-    font-size: 50px;
-    text-align: center;
-    margin-top: 80px;
-}
+ p{
+     color:white;
+     font-size:30px;
+     text-align:center;
+ }
