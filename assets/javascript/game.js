@@ -1,187 +1,139 @@
 
-  function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-   }
- 
- var artist=["kanye", "drake", "eminem", "kendrick"];
- 
- console.log("artist: "+artist)
- 
- var computerChoiceLength = artist.length;
- 
- console.log("artistlength: "+computerChoiceLength) 
- 
- var i = 10;
- 
- 
- //document.getElementById("i").innerHTML = i;
- 
- 
- var computerChoice = artist[getRandomInt(computerChoiceLength)];
- 
- console.log("computerChoice: "+computerChoice)
- 
- var charArtist = Array.from(computerChoice);
-  
- console.log("charArtist: "+charArtist)
- 
- var artistLength =computerChoice.length;
- 
- console.log("artistlength: "+artistLength)
- 
- var blank = '-'.repeat(artistLength);
- 
- console.log("blank: "+blank)
- 
- var charBlank = Array.from(blank);
- 
- console.log("charBlank: "+charBlank)
- 
- var array = [];
- 
- console.log("array is "+array)
- 
- trackArray = [];
- 
- 
- 
- 
- /////////////////////////////////
- 
- 
- document.onkeyup = function(event) {
- 
- var userGuessCap = event.key;
- 
- var userGuess = userGuessCap.toLowerCase();
- 
- console.log("userGuess: "+userGuess)
- 
- var check = charArtist.indexOf(userGuess);
- 
- console.log("check: "+check)
- 
- var x = 0;
- 
- 
- 
- userGuessArray=Array.from(userGuess)
- 
- 
- 
- 
- ///////// BEGIN LOGIC HERE ////////
- 
- if (trackArray.indexOf(userGuess) === -1) {
- 
- 
- 
- 
- function addArray(userGuess, array, userGuessArray){
- 
-  var newArray = new Array;
-     
-     if(array.indexOf(userGuess) === -1) {
- 
-      newArray = array.concat(userGuessArray);
+
+//=======================================================================
+// Variables for holding data
+
+var wordOptions = ["ed", "taylor", "matt","harry"]
+var selectedWord= "";
+var lettersinWord = [];
+var numBlanks = 0;
+var blanksAndSuccesses = [];
+var wrongLetters = [];
+
+// Counters
+var winCount = 0;
+var lossCount = 0;
+var guessesLeft = 9;
+
+
+
+//Functions 
+//=======================================================================
+
+function startGame () {
+    selectedWord= wordOptions[Math.floor(Math.random() * wordOptions.length)];
+    lettersinWord= selectedWord.split("");
+    numBlanks = lettersinWord.length;
+
+    //Reset
+    guessesLeft=(" " +9);
+    wrongLetters=[];
+    blanksAndSuccesses = [];
+
+    //populate blanks and successes with right number of blanks
+    for (var i=0; i<numBlanks; i++){
+        blanksAndSuccesses.push("_");
+    //Testing
+    console.log(numBlanks);
+    }
     
-     }
- 
-   if (array.indexOf(userGuess) > -1) {
-     newArray = array.concat();
+
+    //change html to show counts
+    document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join(" ");
+    document.getElementById("numGuesses").innerHTML = guessesLeft;
+    document.getElementById("winCounter").innerHTML = winCount;
+    document.getElementById("lossCounter").innerHTML = lossCount;
+
+
+
+
+//testing
+    console.log(selectedWord);
+    console.log(lettersinWord);
+    console.log(numBlanks);
+    console.log(blanksAndSuccesses);
+
+}
+
+function checkLetters(letter) {
+    //check if letter exists in code at all
+}
+
+function checkLetters(letter){
+    //does it exist anywhere in the word
+    var isLetterInWord=false;
+    for( var i=0; i<numBlanks; i++){
+        if(selectedWord[i]==letter){
+        isLetterInWord = true;
+        
+        }
+    }
+
+
+//check where letter is in word and populate the blanksandsuccesses array
+
+if(isLetterInWord) {
+   for(var i=0; i<numBlanks; i++){
+        if(selectedWord[i] == letter){
+                  
+        blanksAndSuccesses[i] = letter;
+
+        }
+    }
+}
+//letter not found
+else{
+    wrongLetters.push(letter);
+    guessesLeft--;
+}
+//Testing
+    console.log (blanksAndSuccesses);
+}
+
+function roundComplete(){
+    console.log("Win Count: " + winCount + " | Loss Count: " + lossCount + "| Guesses Left: " + guessesLeft);
+
+//update the HTML to reflect the most recent count stats
+    document.getElementById("numGuesses").innerHTML = guessesLeft;
+    document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join(" ");
+    document.getElementById("wrongGuesses").innerHTML = wrongLetters.join(" ");
+
+
+
+//Check if user won
+if(lettersinWord.toString() ==blanksAndSuccesses.toString()) {
+    winCount++;
+    alert("you won!");
     
-     
-   }
- 
-   return array = newArray;
-  
- }
- 
- trackArray =addArray(userGuess, array, userGuessArray);
- 
- document.getElementById("trackArray").innerHTML = trackArray;
- 
- console.log("updated array "+trackArray)
- 
- array = addArray(userGuess, array, userGuessArray);
- 
- 
- 
- 
- 
- var n = 0;
- 
-  function kelseySplice(n, artistLength, charBlank, userGuess, computerChoice) {
-    var kels = "";
-     for (n=0; n < artistLength; n++) {
- 
-       if (userGuess === computerChoice[n]) {
-   
-         kels =charBlank.splice(n, 1, userGuess);
-       }
-     }
-    return charBlank = kels;
-   }
- 
- 
- 
- console.log("this is tracker "+trackArray.indexOf(userGuess))
- 
- 
- 
- 
-  if (check>-1){
-   
-    // charBlank.splice(check, 1, userGuess);
- 
-    charBlank === kelseySplice(n, artistLength, charBlank, userGuess, computerChoice);
- 
-    console.log("NEW BLANK STRING "+charBlank)
- 
- 
- 
-    i=i-1
- 
-    console.log("i="+i)
-  }
- 
- 
- 
- blankStringNew = charBlank.join("");
- 
- console.log("blankStringNew "+blankStringNew)
- 
- document.getElementById("blankStringNew").innerHTML = blankStringNew;
- 
- 
- 
-  if (blankStringNew === computerChoice) {
- 
- 
-    alert("YOU WIN!!!")
- 
-    location.reload()
-  }
-   
- 
-  if (check === -1) {
- 
-    i=i-1;
- 
-    console.log("i="+i)
- 
-  }
- 
- 
-  if ( i<1) {
- 
-    alert("YOU LOSE!!!")
- 
-    location.reload()
-   }
-  
- 
-   document.getElementById("countdown").innerHTML = i;
- 
- }
- }
+//Update the win counter in the HTML
+    document.getElementById("winCounter").innerHTML=winCount;
+    
+startGame();
+
+}
+
+//check if user lost
+
+else if(guessesLeft ==0) {
+    lossCount++;
+    alert("you lost");
+//update the loss counter in the HTML
+    document.getElementById("lossCounter").innerHTML=lossCount;
+
+    startGame();
+}
+}
+
+//Call the function
+//=======================================================================
+
+startGame();
+
+//Key Clicks
+document.onkeyup = function(event) {
+    var lettersGuessed = String.fromCharCode(event.keyCode).toLowerCase();
+    checkLetters(lettersGuessed);
+    roundComplete();
+    //Testing
+    console.log(lettersGuessed)
+}
